@@ -66,17 +66,19 @@ describe("inc", () => {
   });
 
   // decrement the account
-  it("DEcrements the counter", async () => {
-    if (!myAccount) {
-      throw new Error("Account not initialized");
-    }
-    const txn = await program.methods
-      .decrement()
-      .accounts({
-        myAccount: myAccount.publicKey,
-      })
-      .rpc();
-    const account = await program.account.myAccount.fetch(myAccount.publicKey);
-    console.log("Your transaction signature", txn);
-  });
+    it("DEcrements the counter", async () => {
+      if (!myAccount) {
+        throw new Error("Account not initialized");
+      }
+      const txn = await program.methods
+        .decrement()
+        .accounts({
+          myAccount: myAccount.publicKey,
+        })
+        .rpc();
+      const account = await program.account.myAccount.fetch(
+        myAccount.publicKey
+      );
+      console.log("Your transaction signature", txn);
+    });
 });
